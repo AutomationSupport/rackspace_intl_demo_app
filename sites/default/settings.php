@@ -1,63 +1,7 @@
 <?php
 
-
-require_once(__DIR__ . '/../../vendor/autoload.php');
-Dotenv::load(__DIR__ . '/../../');
-
-define('DB_1_DATABASE_HOST', getenv('DB_1_DATABASE_HOST'));
-define('DB_1_DATABASE_USER', getenv('DB_1_DATABASE_USER'));
-define('DB_1_DATABASE_PASSWORD', getenv('DB_1_DATABASE_PASSWORD'));
-define('DB_1_DATABASE_NAME', getenv('DB_1_DATABASE_NAME'));
-
-define('REDIS_INSTANCE_HOST', getenv('REDIS_INSTANCE_HOST'));
-define('REDIS_INSTANCE_PORT', getenv('REDIS_INSTANCE_PORT'));
-define('REDIS_INSTANCE_PASSWORD', getenv('REDIS_INSTANCE_PASSWORD'));
-
-
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => DB_1_DATABASE_NAME,
-      'username' => DB_1_DATABASE_USER,
-      'password' => DB_1_DATABASE_PASSWORD,
-      'host' => DB_1_DATABASE_HOST,
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
-$conf['cache_backends'][] = 'sites/all/modules/redis/redis.autoload.inc';
-$conf['redis_client_interface'] = 'PhpRedis';
-$conf['redis_client_host'] = REDIS_INSTANCE_HOST;
-$conf['redis_client_port'] = REDIS_INSTANCE_PORT;
-$conf['redis_client_password'] = REDIS_INSTANCE_PASSWORD;
-$conf['page_cache_invoke_hooks'] = TRUE;
-$conf['page_cache_without_database'] = FALSE;
-$conf['cache_default_class'] = 'Redis_Cache';
-$conf['cache_class_cache_bootstrap'] = 'Redis_Cache';
-$conf['cache_class_cache'] = 'Redis_Cache';
-$conf['cache_class_cache_menu'] = 'Redis_Cache';
-$conf['cache_class_cache_block'] = 'Redis_Cache';
-$conf['cache_class_cache_views'] = 'Redis_Cache';
-$conf['cache_class_cache_views_data'] = 'Redis_Cache';
-$conf['cache_field'] = 'Redis_Cache';
-$conf['cache_class_cache_field'] = 'Redis_Cache';
-$conf['cache_class_cache_image'] = 'Redis_Cache';
-$conf['cache_class_cache_libraries'] = 'Redis_Cache';
-$conf['cache_class_cache_metatag'] = 'Redis_Cache';
-$conf['cache_class_cache_search_api_solr'] = 'Redis_Cache';
-$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
-// Entity Cache.
-if (!empty($entity_cache)) {
-  $conf['cache_entity_node'] = 'Redis_Cache';
-  $conf['cache_entity_fieldable_panels_pane'] = 'Redis_Cache';
-  $conf['cache_entity_file'] = 'Redis_Cache';
-  $conf['cache_entity_taxonomy_term'] = 'Redis_Cache';
-  $conf['cache_entity_taxonomy_vocabulary'] = 'Redis_Cache';
-}
+define('DRUPAL_ROOT', getcwd());
+require_once DRUPAL_ROOT . '/sites/default/config.php';
 
 /**
  * @file
