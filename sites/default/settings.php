@@ -213,21 +213,6 @@ require_once SITE_ROOT . '/sites/default/config.php';
  *   );
  * @endcode
  *
-$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => 'drupaldemo',
-      'username' => 'root',
-      'password' => 'root',
-      'host' => 'localhost',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
 
 **
  * Access control for update.php script.
