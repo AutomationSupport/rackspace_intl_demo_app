@@ -1,7 +1,7 @@
 <?php
 
-define('DRUPAL_ROOT', getcwd());
-require_once DRUPAL_ROOT . '/sites/default/config.php';
+define('SITE_ROOT', getcwd());
+require_once SITE_ROOT . '/sites/default/config.php';
 
 /**
  * @file
