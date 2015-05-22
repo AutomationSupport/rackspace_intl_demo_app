@@ -3,6 +3,9 @@
 define('SITE_ROOT', getcwd());
 require_once SITE_ROOT . '/sites/default/config.php';
 
+$conf['cache_backends'][] = 'sites/all/modules/redis/redis.autoload.inc';
+$conf['redis_client_interface'] = 'PhpRedis';
+
 /**
  * @file
  * Drupal site-specific configuration file.
