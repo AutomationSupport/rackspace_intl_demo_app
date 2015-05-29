@@ -3,6 +3,33 @@
 define('SITE_ROOT', getcwd());
 require_once SITE_ROOT . '/sites/default/config.php';
 
+$conf['cache_backends'][] = 'sites/all/modules/redis/redis.autoload.inc';
+$conf['redis_client_interface'] = 'PhpRedis';
+$conf['page_cache_invoke_hooks'] = TRUE;
+$conf['page_cache_without_database'] = FALSE;
+$conf['cache_default_class'] = 'Redis_Cache';
+$conf['cache_class_cache_bootstrap'] = 'Redis_Cache';
+$conf['cache_class_cache'] = 'Redis_Cache';
+$conf['cache_class_cache_menu'] = 'Redis_Cache';
+$conf['cache_class_cache_block'] = 'Redis_Cache';
+$conf['cache_class_cache_views'] = 'Redis_Cache';
+$conf['cache_class_cache_views_data'] = 'Redis_Cache';
+$conf['cache_field'] = 'Redis_Cache';
+$conf['cache_class_cache_field'] = 'Redis_Cache';
+$conf['cache_class_cache_image'] = 'Redis_Cache';
+$conf['cache_class_cache_libraries'] = 'Redis_Cache';
+$conf['cache_class_cache_metatag'] = 'Redis_Cache';
+$conf['cache_class_cache_search_api_solr'] = 'Redis_Cache';
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+// Entity Cache.
+if (!empty($entity_cache)) {
+  $conf['cache_entity_node'] = 'Redis_Cache';
+  $conf['cache_entity_fieldable_panels_pane'] = 'Redis_Cache';
+  $conf['cache_entity_file'] = 'Redis_Cache';
+  $conf['cache_entity_taxonomy_term'] = 'Redis_Cache';
+  $conf['cache_entity_taxonomy_vocabulary'] = 'Redis_Cache';
+}
+
 /**
  * @file
  * Drupal site-specific configuration file.
